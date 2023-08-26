@@ -96,16 +96,77 @@ s19=s1
 print(f"19 {s19} in title case is: '{s19.title()}'")
 
 #20. Find the longest word in a string.
-
+s20=s1
+lng=''
+for wrd in s20.split():
+    if len(wrd)>len(lng):
+        lng=wrd
+print(f"20 Longest word in '{s20}' is '{lng}'")
 
 #21. Find the shortest word in a string.
+s21=s1
+shrt=s21.split()[0]
+for word in s21.split():
+    if len(word)<len(shrt):
+        shrt=word
+print(f"21 Shortest word in '{s21}' is '{shrt}'")
+
 #22. Reverse the order of words in a string.
+s22=s1
+rev=" ".join(s22.split()[::-1])
+print(f"22 Reversed word order of '{s22}' is '{rev}'")
+
 #23. Check if a string is alphanumeric.
+s23=s1
+if s23.isalnum():
+    print(f"23 '{s23}' is Alphanumeric")
+else:
+    print(f"23 '{s23}' is not a Alphanumeric")
+
 #24. Extract all digits from a string.
+s24=s1
+dgt=''
+for char in s24:
+    if char.isdigit():
+        dgt+=char
+print(f"24 Extracted digits from '{s24}' are '{dgt}'")
+
 #25. Extract all alphabets from a string.
+s25=s1
+alph=''
+for char in s25:
+    if char.isalpha():
+        alph+=char
+print(f"25 Extracted alphabets from '{s25}' are '{alph}'")
+
 #26. Count the number of uppercase letters in a string.
+s26=s1
+count=0
+for char in s26:
+    if char.isupper():
+        count+=1
+print(f"26 Number of Upper letters are: {count}")
+
 #27. Count the number of lowercase letters in a string.
+s27=s1
+count=0
+for char in s27:
+    if char.islower():
+        count+=1
+print(f"27 Number of Lower letters are: {count}")
+
 #28. Swap the case of each character in a string.
+s28=s1
+swapped=''
+for char in s28:
+    if char.islower():
+        swapped=swapped+char.upper()
+    elif char.isupper():
+        swapped=swapped+char.lower()
+    else:
+        swapped=swapped+char
+print(f"28 Swapped Upper Lower case string is: {swapped}")
+
 #29. Remove a specific word from a string.
 #30. Check if a string is a valid email address.
 #31. Extract the username from an email address string.
