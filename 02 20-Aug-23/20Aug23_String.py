@@ -168,24 +168,197 @@ for char in s28:
 print(f"28 Swapped Upper Lower case string is: {swapped}")
 
 #29. Remove a specific word from a string.
+s29=s1
+print(f"29 After Removing '{wrd}' string is '{s29.replace(wrd,'')}'")
+
 #30. Check if a string is a valid email address.
+s30=s1
+pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+import re
+if re.match(pattern, s30):
+    print(f"30 '{s30}' is a valid email address.")
+else:
+    print(f"30 '{s30}' is not a valid email address.")
+
 #31. Extract the username from an email address string.
+s31=s1
+if '@' in s31:
+    usr=s31.split('@')[0]
+else:
+    usr=None
+print(f"31 Extracted username is '{usr}'")
+
 #32. Extract the domain name from an email address string.
+s32=s1
+if '@' in s32:
+    domain=s32.split('@')[1]
+else:
+    domain=None
+print(f"32 Extracted Domain is '{domain}'")
+
 #33. Replace multiple spaces in a string with a single space.
+s33=s1
+print(f"33 Removed Mulitiple Spaces string is '{' '.join(s33.split())}'")
+
 #34. Check if a string is a valid URL.
+s34=s1
+pattern=r'^(https?|ftp)://[^\s/$.?#].[^\s]*$'
+if re.match(pattern,s34):
+    print(f"34 '{s34}' is a valid URL.")
+else:
+    print(f"34 '{s34}' is not a valid URL.")
+
 #35. Extract the protocol (http or https) from a URL string.
+s35=s1
+pattern=r'^(https?)://'
+match=re.match(pattern,s35)
+if match:
+    print(f"35 '{s35}' Extracted Protocol '{match.group(1)}'")
+else:
+    print(f"35 '{s35}' No Protocol Found")
+
 #36. Find the frequency of each character in a string.
+s36=s1
+freq={}
+for char in s36:
+    if char in freq:
+        freq[char]+=1
+    else:
+        freq[char]=1
+print(f"36")
+for char, freq in freq.items():
+    print(f"'{char}' occured {freq} times")
+
 #37. Remove all punctuation from a string.
+s37=s1
+import string
+translator = str.maketrans("","",string.punctuation)
+print(f"37 Remove Punct is '{s37.translate(translator)}'")
+
 #38. Check if a string contains only digits.
+s38=s1
+if s38.isdigit():
+    print(f"38 '{s38}' contains only digits.")
+else:
+    print(f"38 '{s38}' contains non-digit characters.")
+
 #39. Check if a string contains only alphabets.
+s39=s1
+if s38.isalpha():
+    print(f"39 '{s39}' contains only aphabets.")
+else:
+    print(f"39 '{s39}' contains non-alphabets characters.")
+
 #40. Convert a string to a list of characters.
+s40=s1
+lst=[]
+for c in s40:
+    lst.append(c)
+
+print(f"40 '{s40}' each char in list is {lst}")
+
 #41. Check if two strings are anagrams.
+s411='anagram'
+s412='gramana'
+if sorted(s411)==sorted(s412):
+    print(f"41 '{s411}' and '{s412}' are Anagram.")
+else:
+    print(f"41 '{s411}' and '{s412}' are not Anagram.")
+
 #42. Encode a string using a Caesar cipher.
+s42=s1
+encrypted_text = ""
+for char in s42:
+    if char.isalpha():
+        if char.isupper():
+            base = ord('A')
+        else:
+            base = ord('a')
+        # Apply the Caesar cipher shift
+        encrypted_char = chr((ord(char) - base + 3) % 26 + base)
+        encrypted_text += encrypted_char
+    else:
+        encrypted_text += char  # Keep non-alphabet characters unchanged
+print(f"42 Encripted text for '{s42}' is '{encrypted_text}'")
+
 #43. Decode a Caesar cipher encoded string.
+s43=encrypted_text
+decrypted_text = ""
+for char in s43:
+    if char.isalpha():
+        if char.isupper():
+            base = ord('A')
+        else:
+            base = ord('a')
+        # Apply the Caesar cipher shift
+        decrypted_char = chr((ord(char) - base - 3) % 26 + base)
+        decrypted_text += decrypted_char
+    else:
+        decrypted_text += char  # Keep non-alphabet characters unchanged
+print(f"43 Decripted text for '{s43}' is '{decrypted_text}'")
+
 #44. Find the most frequent word in a string.
+s44=s1
+from collections import Counter
+words = re.findall(r'\w+', s44.lower())  # Tokenize and convert to lowercase
+word_counts = Counter(words)
+most_common_word, frequency = word_counts.most_common(1)[0]
+print(f"44 The most frequent word is '{most_common_word}' with a frequency of {frequency}.")
+
 #45. Find all unique words in a string.
+s45=s1
+from collections import Counter
+words = re.findall(r'\w+', s44.lower())  # Tokenize and convert to lowercase
+unique_words = set(words)
+print(f"45 Unique words in string:")
+for i in unique_words:
+    print(i)
 #46. Count the number of syllables in a string.
+s46=s1
+vowels = "aeiouAEIOU"
+count = 0
+in_vowel_group = False
+for char in s46:
+    if char in vowels:
+        if not in_vowel_group:
+            count += 1
+            in_vowel_group = True
+    else:
+        in_vowel_group = False
+
+if word.endswith("e"):
+    count -= 1
+
+if count == 0:
+    count = 1  # Handle words with no vowels
+
+syllable_count = count
+
+print(f"46 The word '{s46}' has {syllable_count} syllables.")
+
+
 #47. Check if a string contains any special characters.
+s47=s1
+pattern=r'[^\w\s]'
+if bool(re.search(pattern,s47)):
+    print(f"47 {s47} contains special characters.")
+else:
+    print(f"47 {s47} desn't contain any special characters.")
+
 #48. Remove the nth word from a string.
+n=2
+s48=s1
+list=s48.split()
+print(f"48 {n}th word removed from string '{s48}' is '{''.join(list.pop(n-1))}'")
+
 #49. Insert a word at the nth position in a string.
+pos=2
+s49=s1
+
+print(f"49 {wrd} added to string '{s49}' at {pos} position is '{s49[:pos]+wrd+s49[pos:]}'")
+
 #50. Convert a CSV string to a list of lists.
+csv_string = "1,John,Doe\n2,Jane,Smith\n3,Michael,Johnson"
+lines = csv_string.split("\n")
+list_of_lists = [line.split(",") for line in lines]
+print(f"50 list of List: {list_of_lists}")
