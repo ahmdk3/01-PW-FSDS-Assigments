@@ -1,0 +1,236 @@
+1. **Encapsulation in Python:**
+   - Encapsulation is a fundamental concept in object-oriented programming (OOP).
+   - It involves bundling the data (attributes) and methods (functions) that operate on the data into a single unit known as a class.
+   - Encapsulation helps in hiding the internal implementation details of an object and exposing only what is necessary.
+
+2. **Key Principles of Encapsulation:**
+   - **Access Control:** Restricting access to certain components of a class.
+   - **Data Hiding:** Protecting the internal state of an object from direct external access.
+
+3. **Achieving Encapsulation in Python:**
+   - Use private attributes and methods within a class.
+   - Example:
+
+     ```python
+     class MyClass:
+         def __init__(self, value):
+             self.__value = value  # Private attribute
+
+         def get_value(self):
+             return self.__value
+
+         def set_value(self, new_value):
+             self.__value = new_value
+     ```
+
+4. **Public, Private, and Protected Access Modifiers:**
+   - **Public (`+`):** Accessible from anywhere.
+   - **Private (`-`):** Accessible only within the class (name mangling applies).
+   - **Protected (`#`):** Accessible within the class and its subclasses.
+
+5. **Example with `Person` Class:**
+   ```python
+   class Person:
+       def __init__(self, name):
+           self.__name = name  # Private attribute
+
+       def get_name(self):
+           return self.__name
+
+       def set_name(self, new_name):
+           self.__name = new_name
+   ```
+
+6. **Getter and Setter Methods:**
+   - **Getter:** Retrieves the value of a private attribute.
+   - **Setter:** Modifies the value of a private attribute.
+   - Example:
+
+     ```python
+     class MyClass:
+         def __init__(self, value):
+             self.__value = value
+
+         def get_value(self):
+             return self.__value
+
+         def set_value(self, new_value):
+             self.__value = new_value
+     ```
+
+7. **Name Mangling:**
+   - Name mangling is a technique used in Python to make attributes and methods of a class more difficult to access from outside the class.
+   - Private attributes are prefixed with double underscores, and their names are modified to include the class name.
+
+8. **Example with `BankAccount` Class:**
+   ```python
+   class BankAccount:
+       def __init__(self):
+           self.__balance = 0  # Private attribute
+           self.__account_number = "123456"  # Private attribute
+
+       def deposit(self, amount):
+           self.__balance += amount
+
+       def withdraw(self, amount):
+           if amount <= self.__balance:
+               self.__balance -= amount
+           else:
+               print("Insufficient funds.")
+   ```
+
+9. **Advantages of Encapsulation:**
+   - **Code Maintainability:** Changes can be made to the internal implementation without affecting external code.
+   - **Security:** Prevents unauthorized access and modifications.
+   - **Modularity:** Components can be developed and tested independently.
+
+10. **Accessing Private Attributes using Name Mangling:**
+    ```python
+    class MyClass:
+        def __init__(self, value):
+            self.__value = value
+
+    obj = MyClass(10)
+    print(obj._MyClass__value)  # Accessing private attribute using name mangling
+    ```
+
+11. **Example of Encapsulation in School System Hierarchy:**
+    ```python
+    class Person:
+        def __init__(self, name):
+            self.__name = name  # Private attribute
+
+    class Student(Person):
+        def __init__(self, name, student_id):
+            super().__init__(name)
+            self.__student_id = student_id  # Private attribute
+
+    class Teacher(Person):
+        def __init__(self, name, employee_id):
+            super().__init__(name)
+            self.__employee_id = employee_id  # Private attribute
+    ```
+
+12. **Property Decorators and Encapsulation:**
+    - Property decorators provide a concise way to create getter and setter methods.
+    - Example:
+
+      ```python
+      class MyClass:
+          def __init__(self, value):
+              self._value = value  # Protected attribute
+
+          @property
+          def value(self):
+              return self._value
+
+          @value.setter
+          def value(self, new_value):
+              self._value = new_value
+      ```
+
+13. **Data Hiding and Importance:**
+    - Data hiding involves restricting access to certain parts of an object.
+    - Importance: Prevents accidental modification, enforces encapsulation principles, enhances security.
+    - Example:
+
+      ```python
+      class MyClass:
+          def __init__(self, value):
+              self.__value = value  # Private attribute
+      ```
+
+14. **Example with `Employee` Class:**
+    ```python
+    class Employee:
+        def __init__(self, salary, employee_id):
+            self.__salary = salary  # Private attribute
+            self.__employee_id = employee_id  # Private attribute
+
+        def calculate_bonus(self):
+            return self.__salary * 0.1  # Example calculation for yearly bonus
+    ```
+
+15. **Accessors and Mutators:**
+    - **Accessors:** Getter methods that retrieve attribute values.
+    - **Mutators:** Setter methods that modify attribute values.
+    - They help maintain control over attribute access.
+  
+16. **Drawbacks of Encapsulation in Python:**
+    - Overuse of encapsulation can lead to verbose code.
+    - Accessors and mutators can be redundant for simple attributes.
+    - Increased complexity in certain scenarios.
+
+17. **Example with Library System:**
+    ```python
+    class Book:
+        def __init__(self, title, author):
+            self.__title = title  # Private attribute
+            self.__author = author  # Private attribute
+            self.__available = True  # Private attribute
+
+        def get_title(self):
+            return self.__title
+
+        def get_author(self):
+            return self.__author
+
+        def is_available(self):
+            return self.__available
+    ```
+
+18. **Encapsulation Enhancing Code Reusability and Modularity:**
+    - Encapsulation promotes modular design.
+    - Code within a class is encapsulated, making it easier to reuse and extend.
+    - Changes to one part of the code do not affect other parts if encapsulation is properly implemented.
+
+19. **Information Hiding:**
+    - Information hiding is a subset of encapsulation.
+    - It involves hiding the internal details of an object and exposing only what is necessary for external use.
+    - Essential in software development for reducing complexity and preventing unintended interference.
+
+20. **Example with `Customer` Class:**
+    ```python
+    class Customer:
+        def __init__(self, name, address, contact_info):
+            self.__name = name  # Private attribute
+            self.__address = address  # Private attribute
+            self.__contact_info = contact_info  # Private attribute
+
+        # Getter and setter methods for private attributes
+        def get_name(self):
+            return self.__name
+
+        def set_name(self, new_name):
+            self.__name = new_name
+
+        # Similar methods for other private attributes
+    ```
+
+In this example,the Customer class illustrates encapsulation by using private attributes (__name, __address, __contact_info) 
+along with getter and setter methods to control access to and modification of the attributes.
+
+class Customer:
+    def __init__(self, name, address, contact_info):
+        self.__name = name  # Private attribute
+        self.__address = address  # Private attribute
+        self.__contact_info = contact_info  # Private attribute
+
+    # Getter and setter methods for private attributes
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, new_name):
+        self.__name = new_name
+
+    def get_address(self):
+        return self.__address
+
+    def set_address(self, new_address):
+        self.__address = new_address
+
+    def get_contact_info(self):
+        return self.__contact_info
+
+    def set_contact_info(self, new_contact_info):
+        self.__contact_info = new_contact_info

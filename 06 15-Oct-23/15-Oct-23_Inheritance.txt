@@ -1,0 +1,248 @@
+1. **Inheritance in Python:**
+   - Inheritance is a fundamental concept in object-oriented programming (OOP).
+   - It allows a class (subclass/derived class) to inherit properties and behaviors from another class (superclass/base class).
+   - Significance: Code reusability, extensibility, and the ability to model relationships between entities.
+
+2. **Single Inheritance vs. Multiple Inheritance:**
+   - **Single Inheritance:** A class inherits from only one superclass.
+     ```python
+     class Parent:
+         pass
+
+     class Child(Parent):
+         pass
+     ```
+
+   - **Multiple Inheritance:** A class inherits from multiple superclasses.
+     ```python
+     class Parent1:
+         pass
+
+     class Parent2:
+         pass
+
+     class Child(Parent1, Parent2):
+         pass
+     ```
+
+3. **Example of Inheritance:**
+   ```python
+   class Vehicle:
+       def __init__(self, color, speed):
+           self.color = color
+           self.speed = speed
+
+   class Car(Vehicle):
+       def __init__(self, color, speed, brand):
+           super().__init__(color, speed)
+           self.brand = brand
+
+   # Creating a Car object
+   my_car = Car("Blue", 60, "Toyota")
+   ```
+
+4. **Method Overriding:**
+   - Method overriding allows a child class to provide a specific implementation of a method that is already defined in its parent class.
+   - Example:
+
+     ```python
+     class Parent:
+         def show(self):
+             print("Parent method")
+
+     class Child(Parent):
+         def show(self):
+             print("Child method")
+
+     # Method overriding
+     obj = Child()
+     obj.show()  # Output: Child method
+     ```
+
+5. **Accessing Parent Class Methods and Attributes:**
+   - Using `super()`:
+     ```python
+     class Child(Parent):
+         def show(self):
+             super().show()
+             # additional child class logic
+     ```
+
+6. **Use of `super()` Function:**
+   - `super()` is used to call methods from the parent class.
+   - Example:
+
+     ```python
+     class Child(Parent):
+         def show(self):
+             super().show()
+             # additional child class logic
+     ```
+
+7. **Example with `Animal`, `Dog`, and `Cat` Classes:**
+   ```python
+   class Animal:
+       def speak(self):
+           pass
+
+   class Dog(Animal):
+       def speak(self):
+           print("Woof!")
+
+   class Cat(Animal):
+       def speak(self):
+           print("Meow!")
+
+   # Using the classes
+   dog = Dog()
+   cat = Cat()
+   dog.speak()  # Output: Woof!
+   cat.speak()  # Output: Meow!
+   ```
+
+8. **`isinstance()` Function:**
+   - `isinstance(obj, class)` checks if an object is an instance of a class.
+   - Example:
+
+     ```python
+     if isinstance(obj, Vehicle):
+         # obj is an instance of Vehicle class
+     ```
+
+9. **`issubclass()` Function:**
+   - `issubclass(subclass, class)` checks if a class is a subclass of another class.
+   - Example:
+
+     ```python
+     if issubclass(Car, Vehicle):
+         # Car is a subclass of Vehicle
+     ```
+
+10. **Constructor Inheritance:**
+    - Constructors are inherited by default.
+    - Example:
+
+      ```python
+      class Parent:
+          def __init__(self, attribute):
+              self.attribute = attribute
+
+      class Child(Parent):
+          pass
+
+      # Creating a Child object
+      child_obj = Child("value")
+      ```
+
+11. **Example with `Shape`, `Circle`, and `Rectangle` Classes:**
+    ```python
+    class Shape:
+        def area(self):
+            pass
+
+    class Circle(Shape):
+        def __init__(self, radius):
+            self.radius = radius
+
+        def area(self):
+            return 3.14 * self.radius * self.radius
+
+    class Rectangle(Shape):
+        def __init__(self, width, height):
+            self.width = width
+            self.height = height
+
+        def area(self):
+            return self.width * self.height
+
+    # Using the classes
+    circle = Circle(5)
+    rectangle = Rectangle(4, 6)
+    print(circle.area())     # Output: 78.5
+    print(rectangle.area())  # Output: 24
+    ```
+
+12. **Abstract Base Classes (ABCs):**
+    - ABCs define a blueprint for other classes and can't be instantiated themselves.
+    - Example:
+
+      ```python
+      from abc import ABC, abstractmethod
+
+      class MyABC(ABC):
+          @abstractmethod
+          def my_method(self):
+              pass
+      ```
+
+13. **Preventing Modification of Inherited Attributes/Methods:**
+    - Use encapsulation and make attributes/methods private or use naming conventions to indicate they are not to be modified.
+
+14. **Example with `Employee` and `Manager` Classes:**
+    ```python
+    class Employee:
+        def __init__(self, name, salary):
+            self.name = name
+            self.salary = salary
+
+    class Manager(Employee):
+        def __init__(self, name, salary, department):
+            super().__init__(name, salary)
+            self.department = department
+    ```
+
+15. **Method Overloading vs. Method Overriding:**
+    - Method overloading: Multiple methods with the same name but different parameters.
+    - Method overriding: Providing a specific implementation for a method in the child class that is already defined in the parent class.
+
+16. **Purpose of `__init__()` in Inheritance:**
+    - The `__init__()` method initializes the attributes of the child class and the attributes inherited from the parent class.
+    - It is called when an object of the child class is created.
+
+17. **Example with `Bird`, `Eagle`, and `Sparrow` Classes:**
+    ```python
+    class Bird:
+        def fly(self):
+            pass
+
+    class Eagle(Bird):
+        def fly(self):
+            print("Soaring high in the sky!")
+
+    class Sparrow(Bird):
+        def fly(self):
+            print("Flitting from branch to branch!")
+
+    # Using the classes
+    eagle = Eagle()
+    sparrow = Sparrow()
+    eagle.fly()    # Output: Soaring high in the sky!
+    sparrow.fly()  # Output: Flitting from branch to branch!
+    ```
+
+18. **Diamond Problem:**
+    - The diamond problem occurs in multiple inheritance when a class inherits from two classes that have a common ancestor.
+    - In Python, the C3 linearization algorithm is used to address the diamond problem.
+
+19. **"is-a" and "has-a" Relationships:**
+    - "is-a" relationship: Inheritance (e.g., a `Dog` is-a `Animal`).
+    - "has-a" relationship: Composition (e.g., a `Car` has-a `Engine`).
+
+20. **University System Class Hierarchy Example:**
+    ```python
+    class Student(Person):
+        def __init__(self, name, student_id):
+            super().__init__(name)
+            self.student_id = student_id
+
+    class Professor(Person):
+        def __init__(self, name, employee_id):
+            super().__init__(name)
+            self.employee_id = employee_id
+
+    # Using the classes
+    student = Student("John Doe", "S12345")
+    professor = Professor("Dr. Smith", "P98765")
+
+    print(f"Student: {student.name}, ID: {student.student_id}")
+    print(f"Professor: {professor.name}, Employee ID: {professor.employee_id}")
